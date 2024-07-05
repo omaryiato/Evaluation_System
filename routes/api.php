@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EvaluationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+// Define a route to display Evaluation page
+Route::GET('/evaluationView', [EvaluationController::class, 'index'])->name('evaluationView');
+// Define a route to display Get Evaluation Data
+Route::get('evaluation', [EvaluationController::class, 'evaluation'])->name('evaluation');
+// Define a route to Confirm User Evaluation
+// Route::post('submitEvaluation', [HomeController::class, 'submitEvaluation'])->name('submitEvaluation');
+// Define a route to Return Section & Point Information
+// Route::get('getSection', [HomeController::class, 'getSection'])->name('getSection');
+// Define a route to Insert New Section Or New Point
+// Route::post('addNewSection', [HomeController::class, 'addNewSection'])->name('addNewSection');
