@@ -22,7 +22,7 @@
     </head>
     <body class="antialiased">
         <div style="display: flex; justify-content:center, align-items:center,">
-            <a href="{{route('evaluationView')}}">evaluationView</a>
+            <a href="{{route('evaluation_list')}}">evaluationView</a>
 
         </div>
     </body>
