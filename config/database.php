@@ -90,6 +90,21 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
+        'oracle' => [
+            'driver'         => 'oracle',
+            'host'           => env('DB_HOST', '192.168.15.227'),
+            'port'           => env('DB_PORT', '1561'),
+            'database'       => env('DB_DATABASE', 'syshr'),
+            'service_name'   => env('DB_SERVICE_NAME', ''),
+            'username'       => env('DB_USERNAME', 'apps'),
+            'password'       => env('DB_PASSWORD', 'apps'),
+            'charset'        => 'utf8',
+            'prefix'         => '',
+            'prefix_schema'  => '',
+            'options'        => [
+                'format' => 'YYYY-MM-DD HH24:MI:SS',
+            ],
+        ],
 
     ],
 
@@ -123,7 +138,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
