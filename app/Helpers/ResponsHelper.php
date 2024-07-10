@@ -9,22 +9,22 @@ use Symfony\Component\HttpFoundation\Response;
 class ResponsHelper
 {
 
-    // This Function To return Success result , string $message = 'Success'
-    public static function success($data , int $code = 200): JsonResponse
+    // This Function To return Success result
+    public static function success($data = "Successfully", string $message = 'Success', int $code = 200): JsonResponse
     {
         return response()->json([
-            // 'status' => $code,
-            // 'message' => $message,
+            'status' => $code,
+            'message' => $message,
             'data' => $data
         ], $code);
     }
 
-    // This Function To return Error result, string $message = 'Error'
-    public static function error($data , int $code = 400): JsonResponse
+    // This Function To return Error result
+    public static function error($data, string $message = 'Error', int $code = 400): JsonResponse
     {
         return response()->json([
-            // 'status' => $code,
-            // 'message' => $message,
+            'status' => $code,
+            'message' => $message,
             'data' => $data
         ], $code);
     }

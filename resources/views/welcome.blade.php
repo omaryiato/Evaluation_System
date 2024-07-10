@@ -21,9 +21,11 @@
         </style>
     </head>
     <body class="antialiased">
-        <div style="display: flex; justify-content:center, align-items:center,">
+        <div style="display: flex; justify-content:center; align-items:center;">
             <a href="{{route('evaluation_list')}}">evaluationView</a>
-
+        </div>
+        <div style="display: flex; justify-content:center; align-items:center;">
+            <a href="{{route('submitEvaluation')}}">submitEvaluation</a>
         </div>
     </body>
 </html>

@@ -16,22 +16,94 @@ class EvaluationController extends Controller
     }
 
 
-    // Index Funtion To Get ( Evaluation list, Section List, Section Point List) from DB
+    // Index Funtion To Get Evaluation list from DB
     public function index()
     {
         try {
             $employee_number = 16199;
-
             $evaluation_list = $this->serviceLogic->getEvaluationList($employee_number);
-            $section_list = $this->serviceLogic->getSectionList();
-            $section_point_list = $this->serviceLogic->getSectionPointList();
-            $data = [
-                'evaluation_list' => $evaluation_list,
-                'section_list' => $section_list,
-                'section_point_list' => $section_point_list,
-            ];
+            return ResponsHelper::success($evaluation_list);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
 
-            return ResponsHelper::success($data);
+    // sectionList Funtion To Get  Section List from DB
+    public function sectionList()
+    {
+        try {
+            $section_list = $this->serviceLogic->getSectionList();
+            return ResponsHelper::success($section_list);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // pointsList Funtion To Get Points list from DB
+    public function pointsList()
+    {
+        try {
+            $section_point_list = $this->serviceLogic->getSectionPointList();
+            return ResponsHelper::success($section_point_list);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // evaluationHistoryList Funtion To Get Evaluation History list from DB
+    public function evaluationHistoryList()
+    {
+        try {
+            $employee_number = 16199;
+            $evaluation_history_list = $this->serviceLogic->getEvaluationHistoryList($employee_number);
+            return ResponsHelper::success($evaluation_history_list);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // evaluationDetailsHistoryList Funtion To Get Evaluation Details History list from DB
+    public function evaluationDetailsHistoryList()
+    {
+        try {
+            $employee_number = 16199;
+            $evaluation_details_history_list = $this->serviceLogic->getEvaluationDetailsHistoryList($employee_number);
+            return ResponsHelper::success($evaluation_details_history_list);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // submitEvaluation Funtion To Update the evaluation
+    public function submitEvaluation(Request $request)
+    {
+        try {
+            // dd($request);
+            $evaluation_list = $this->serviceLogic->submitEvaluation($request);
+            return ResponsHelper::success($evaluation_list);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // addNewSection Funtion To Add New Section In Table Evalaution Sections
+    public function addNewSection(Request $request)
+    {
+        try {
+            $section_Info = $this->serviceLogic->addNewSection($request);
+            return ResponsHelper::success($section_Info);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // addNewPoint Funtion To Add New Points In Evaluation Section Points Taable 
+    public function addNewPoint(Request $request)
+    {
+        try {
+            // dd($request);
+            $points_Info = $this->serviceLogic->addNewPoint($request);
+            return ResponsHelper::success($points_Info);
         } catch (\Exception $e) {
             return ResponsHelper::error($e->getMessage());
         }
