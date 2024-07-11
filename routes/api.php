@@ -17,7 +17,15 @@ use App\Http\Controllers\EvaluationController;
 */
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+    return response()->json([
+        'user' => $request->user(),
+        'csrfToken' => csrf_token(),
+    ]);
+});
+
+
+Route::get('/csrf-token', function () {
+    return response()->json(['csrfToken' => csrf_token()]);
 });
 
 
@@ -30,7 +38,7 @@ Route::Get('/section_list', [EvaluationController::class, 'sectionList'])->name(
 // Define a route to Fetch Points List
 Route::Get('/points_list', [EvaluationController::class, 'pointsList'])->name('points_list');
 
-// Define a route to Fetch Evaluation History List 
+// Define a route to Fetch Evaluation History List
 Route::Get('/evaluation_history_list', [EvaluationController::class, 'evaluationHistoryList'])->name('evaluation_history_list');
 
 // Define a route to Fetch Points List
