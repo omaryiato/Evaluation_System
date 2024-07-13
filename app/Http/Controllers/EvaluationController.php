@@ -97,13 +97,61 @@ class EvaluationController extends Controller
         }
     }
 
-    // addNewPoint Funtion To Add New Points In Evaluation Section Points Taable 
+    // addNewPoint Funtion To Add New Points In Evaluation Section Points Taable
     public function addNewPoint(Request $request)
     {
         try {
             // dd($request);
             $points_Info = $this->serviceLogic->addNewPoint($request);
             return ResponsHelper::success($points_Info);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // updateSection Funtion To Update Section In Evaluation Section  Taable
+    public function updateSection(Request $request)
+    {
+        try {
+            dd($request);
+            $section_Info = $this->serviceLogic->updateSection($request);
+            return ResponsHelper::success($section_Info);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // updatePoint Funtion To Update Points In Evaluation Section Points Taable
+    public function updatePoint(Request $request)
+    {
+        try {
+            dd($request);
+            $points_Info = $this->serviceLogic->updatePoint($request);
+            return ResponsHelper::success($points_Info);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // deleteSection Funtion To Delete Sections In Evaluation Section  Taable
+    public function deleteSection(Request $request)
+    {
+        try {
+            // dd($request);
+            $section_id = $this->serviceLogic->deleteSection($request);
+            return ResponsHelper::success($section_id);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
+    // deletePoint Funtion To Delete Points In Evaluation Section Points Taable
+    public function deletePoint(Request $request)
+    {
+        try {
+            // dd($request);
+            $points_id = $this->serviceLogic->deletePoint($request);
+            return ResponsHelper::success($points_id);
         } catch (\Exception $e) {
             return ResponsHelper::error($e->getMessage());
         }

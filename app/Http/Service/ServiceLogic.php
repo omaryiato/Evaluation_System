@@ -58,7 +58,7 @@ class ServiceLogic
         $p_login_user = $evaluationDetails['p_login_user'];
         $p_perfmce_decn = $evaluationDetails['p_perfmce_decn'];
         $p_comments = $evaluationDetails['p_comments'];
-        
+
         // Store the Point Details single variable
         $pointDetailsArray = $request->point_details;
 
@@ -75,7 +75,7 @@ class ServiceLogic
         return $this->mainOracleRepo->addNewSection($p_section_name_en, $p_section_name_ar, $p_section_calc_value, $p_login_user);
     }
 
-    // addNewPoint Funtion To Add New Points In Evaluation Section Points Taable 
+    // addNewPoint Funtion To Add New Points In Evaluation Section Points Taable
     public function addNewPoint($request)
     {
         $p_section_id  = $request->p_section_id;
@@ -86,4 +86,47 @@ class ServiceLogic
         $p_login_use = $request->p_login_use;
         return $this->mainOracleRepo->addNewPoint($p_section_id, $p_eval_point_name_en, $p_eval_point_name_ar, $p_min_grade, $p_max_grade, $p_login_use);
     }
+
+    // updateSection Funtion To Update Section In Evaluation Section  Taable
+    public function updateSection($request)
+    {
+        // dd($request);
+        $p_section_id       = $request->p_section_id;
+        $p_section_name_en  = $request->p_section_name_en;
+        $p_sec_name_ar      = $request->p_sec_name_ar;
+        $p_sec_calc_value   = $request->p_sec_calc_value;
+        $p_login_user       = $request->p_login_user;
+
+        return $this->mainOracleRepo->updateSection($p_section_id, $p_section_name_en, $p_sec_name_ar, $p_sec_calc_value, $p_login_user);
+    }
+
+    // updatePoint Funtion To Update Section In Evaluation Section  Taable
+    public function updatePoint($request)
+    {
+        // dd($request);
+        $p_eval_point_id        = $request->p_eval_point_id;
+        $p_EVAL_POINT_NAME_EN   = $request->p_EVAL_POINT_NAME_EN;
+        $p_EVAL_POINT_NAME_ar   = $request->p_EVAL_POINT_NAME_ar;
+        $p_min_grage            = $request->p_min_grage;
+        $p_max_grade            = $request->p_max_grade;
+        $p_login_user           = $request->p_login_user;
+
+        return $this->mainOracleRepo->updatePoint($p_eval_point_id, $p_EVAL_POINT_NAME_EN, $p_EVAL_POINT_NAME_ar, $p_min_grage, $p_max_grade, $p_login_user);
+    }
+
+    // deleteSection Funtion To Delete Sections In Evaluation Section  Taable
+    public function deleteSection($request)
+    {
+        $p_section_id         = $request->p_section_id ;
+        return $this->mainOracleRepo->deleteSection($p_section_id );
+    }
+
+    // deletePoint Funtion To Delete Points In Evaluation Section Points Taable
+    public function deletePoint($request)
+    {
+        $p_eval_point_id        = $request->p_eval_point_id;
+        return $this->mainOracleRepo->deletePoint($p_eval_point_id);
+    }
 }
+
+

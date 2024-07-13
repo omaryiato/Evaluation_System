@@ -48,7 +48,19 @@ Route::Get('/evaluation_details_history_list', [EvaluationController::class, 'ev
 Route::POST('/submit_evaluation', [EvaluationController::class, 'submitEvaluation'])->name('submit_evaluation');
 
 // Define a route to Add New Section
-Route::post('/add_new_section', [EvaluationController::class, 'addNewSection'])->name('add_new_section');
+Route::POST('/add_new_section', [EvaluationController::class, 'addNewSection'])->name('add_new_section');
 
 // Define a route to Add New Point
-Route::post('/add_new_point', [EvaluationController::class, 'addNewPoint'])->name('add_new_point');
+Route::POST('/add_new_point', [EvaluationController::class, 'addNewPoint'])->name('add_new_point');
+
+// Define a route to Update Section
+Route::POST('/update_section', [EvaluationController::class, 'updateSection'])->name('update_section');
+
+// Define a route to Update Points
+Route::POST('/update_points', [EvaluationController::class, 'updatePoint'])->name('update_points');
+
+// Define a route to Delete Section
+Route::POST('/delete_section', [EvaluationController::class, 'deleteSection'])->name('delete_section');
+
+// Define a route to Delete Points
+Route::POST('/delete_points', [EvaluationController::class, 'deletePoint'])->name('delete_points');
