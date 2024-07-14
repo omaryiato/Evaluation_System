@@ -50,7 +50,7 @@ class MainOracleRepo
             $eval_point_id = $detail['eval_point_id'];
             $eval_grade = $detail['eval_grade'];
             $login_user = $detail['login_user'];
-            DB::statement("BEGIN sshr_emp_evaluation.insert_trxn_evaluation_details($eval_id, $eval_point_id, $eval_grade, $login_user); END;");
+            DB::statement("BEGIN sshr_emp_evaluation.insert_trxn_evaluation_details($eval_id, $eval_point_id, '$eval_grade', $login_user); END;");
         }
 
         DB::statement("BEGIN sshr_emp_evaluation.insert_trxn_eval_details_hist($p_eval_id, $p_login_user); END;");
@@ -99,7 +99,6 @@ class MainOracleRepo
     // updatePoint Funtion To Update Section In Evaluation Section  Taable
     public function updatePoint($p_eval_point_id, $p_EVAL_POINT_NAME_EN, $p_EVAL_POINT_NAME_ar, $p_min_grage, $p_max_grade, $p_login_user)
     {
-        // dd($request);
         DB::statement("BEGIN sshr_emp_evaluation.update_eval_points_data($p_eval_point_id , '$p_EVAL_POINT_NAME_EN', '$p_EVAL_POINT_NAME_ar', $p_min_grage, $p_max_grade, $p_login_user); END;");
         return "Point Updated Successfully";
     }

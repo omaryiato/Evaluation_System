@@ -113,7 +113,7 @@ class EvaluationController extends Controller
     public function updateSection(Request $request)
     {
         try {
-            dd($request);
+            // dd($request);
             $section_Info = $this->serviceLogic->updateSection($request);
             return ResponsHelper::success($section_Info);
         } catch (\Exception $e) {
@@ -125,7 +125,6 @@ class EvaluationController extends Controller
     public function updatePoint(Request $request)
     {
         try {
-            dd($request);
             $points_Info = $this->serviceLogic->updatePoint($request);
             return ResponsHelper::success($points_Info);
         } catch (\Exception $e) {

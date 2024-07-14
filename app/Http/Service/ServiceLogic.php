@@ -103,7 +103,6 @@ class ServiceLogic
     // updatePoint Funtion To Update Section In Evaluation Section  Taable
     public function updatePoint($request)
     {
-        // dd($request);
         $p_eval_point_id        = $request->p_eval_point_id;
         $p_EVAL_POINT_NAME_EN   = $request->p_EVAL_POINT_NAME_EN;
         $p_EVAL_POINT_NAME_ar   = $request->p_EVAL_POINT_NAME_ar;
