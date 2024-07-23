@@ -5,29 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvaluationController;
 
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return response()->json([
-        'user' => $request->user(),
-        'csrfToken' => csrf_token(),
-    ]);
-});
-
-
-Route::get('/csrf-token', function () {
-    return response()->json(['csrfToken' => csrf_token()]);
-});
-
 
 // Define a route to Fetch Evaluation page
 Route::Get('/evaluation_list', [EvaluationController::class, 'Index'])->name('evaluation_list');
@@ -64,3 +41,16 @@ Route::POST('/delete_section', [EvaluationController::class, 'deleteSection'])->
 
 // Define a route to Delete Points
 Route::POST('/delete_points', [EvaluationController::class, 'deletePoint'])->name('delete_points');
+
+/*
+// // Define a route to Check Hashkey
+// Route::POST('/delete_points', [EvaluationController::class, 'deletePoint'])->name('delete_points');
+
+// "SELECT xxajmi_sshr_ticketing.xxajmi_user_valid@TKT_TO_SELF_SERV('$hashKey' ,'$ip_address') AS User_Validat
+//                 from dual"
+*/
+
+
+// Route::get('/sanctum/csrf-cookie', function () {
+//     return response()->json(['csrfToken' => csrf_token()]);
+// });
