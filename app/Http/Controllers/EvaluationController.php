@@ -16,8 +16,31 @@ class EvaluationController extends Controller
     }
 
 
+
+
+
+    // Index Funtion To Check The IP Address And The Hashkey
+    public function index(Request $request)
+    {
+        try {
+            $ip_address = '192.168.15.94';
+            // Get the hashkey from the query parameters
+            // $hashkey = $request->query('hashkey');
+            $hashkey = '14B3EF8025C914F9E060A8C0E10F6673' ;
+            $hashkey = $this->serviceLogic->checkUserValidation($hashkey, $ip_address);
+            // dd($hashkey);
+            // $hashkey = '14B3EF8025C914F9E060A8C0E10F6673';
+            // Do something with the hashkey
+            // For example, return it in the response
+            // return response()->json(['hashkey' => $hashkey]);
+            return ResponsHelper::success($hashkey);
+        } catch (\Exception $e) {
+            return ResponsHelper::error($e->getMessage());
+        }
+    }
+
     // Index Funtion To Get Evaluation list from DB
-    public function index()
+    public function evaluationList(Request $request)
     {
         try {
             $employee_number = 16199;

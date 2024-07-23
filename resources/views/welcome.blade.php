@@ -23,10 +23,10 @@
     </head>
     <body class="antialiased">
         <div style="display: flex; justify-content:center; align-items:center;">
-            
+
         </div>
         <div style="display: flex; justify-content:center; align-items:center;">
-            <a href="{{route('submit_evaluation')}}">submitEvaluation</a>
+            <a href="{{route('evaluation_system')}}">evaluation_system</a>
         </div>
     </body>
 </html>

@@ -5,9 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EvaluationController;
 
 
+// Define a route to Check Hashkey
+Route::GET('/evaluation_system', [EvaluationController::class, 'Index'])->name('evaluation_system');
 
 // Define a route to Fetch Evaluation page
-Route::Get('/evaluation_list', [EvaluationController::class, 'Index'])->name('evaluation_list');
+Route::Get('/evaluation_list', [EvaluationController::class, 'evaluationList'])->name('evaluation_list');
 
 // Define a route to Fetch Section List
 Route::Get('/section_list', [EvaluationController::class, 'sectionList'])->name('section_list');
@@ -41,15 +43,6 @@ Route::POST('/delete_section', [EvaluationController::class, 'deleteSection'])->
 
 // Define a route to Delete Points
 Route::POST('/delete_points', [EvaluationController::class, 'deletePoint'])->name('delete_points');
-
-/*
-// // Define a route to Check Hashkey
-// Route::POST('/delete_points', [EvaluationController::class, 'deletePoint'])->name('delete_points');
-
-// "SELECT xxajmi_sshr_ticketing.xxajmi_user_valid@TKT_TO_SELF_SERV('$hashKey' ,'$ip_address') AS User_Validat
-//                 from dual"
-*/
-
 
 // Route::get('/sanctum/csrf-cookie', function () {
 //     return response()->json(['csrfToken' => csrf_token()]);

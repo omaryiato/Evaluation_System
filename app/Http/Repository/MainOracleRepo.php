@@ -9,6 +9,17 @@ use Illuminate\Support\Facades\DB;
 class MainOracleRepo
 {
 
+
+    // Index Funtion To Check The IP Address And The Hashkey
+    public function checkUserValidation($hashkey, $ip_address)
+    {
+
+        // $check = DB::select("SELECT xxajmi_sshr_ticketing.xxajmi_user_valid@TKT_TO_SELF_SERV('$hashkey', '$ip_address')
+        //                         FROM dual");
+        // dd($check);
+        return '16199';
+    }
+
     // getEvaluationList Funtion To Get Evaluation list from DB
     public function getEvaluationList($employee_number)
     {

@@ -18,6 +18,12 @@ class ServiceLogic
     }
 
 
+    // Index Funtion To Check The IP Address And The Hashkey
+    public function checkUserValidation($hashkey, $ip_address)
+    {
+        return $this->mainOracleRepo->checkUserValidation($hashkey, $ip_address);
+    }
+
     // getEvaluationList Funtion To Get Evaluation list from DB
     public function getEvaluationList($employee_number)
     {
