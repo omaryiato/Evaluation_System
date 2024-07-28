@@ -11,6 +11,9 @@
         "laravel/framework": "^9.0",
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
+        "phpseclib/phpseclib": "^3.0",
+        "setasign/fpdi": "^2.6",
+        "setasign/fpdi-fpdf": "^2.3",
         "yajra/laravel-oci8": "9.0"
     },
     "require-dev": {
