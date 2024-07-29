@@ -9,26 +9,30 @@ use App\Helpers\ResponsHelper;
 use setasign\Fpdi\Fpdi;
 use App\Services\PdfService;
 use Carbon\Carbon;
+// use App\Helper\UploadDocumnetAcrchive;
 
 
 class EvaluationController extends Controller
 {
     protected $serviceLogic;
     protected $pdfService;
+    protected $uploadTemplet;
 
     public function __construct(ServiceLogic $serviceLogic, PdfService $pdfService)
     {
         $this->pdfService = $pdfService;
         $this->serviceLogic = $serviceLogic;
+        // $this->uploadTemplet = $uploadTemplet;
     }
 
     // Index Funtion To Check The IP Address And The Hashkey
     public function index(Request $request)
     {
         try {
+
             $ip_address = $request->ip_address;
-            $hashkey = $request->hashkey;
-            // dd($ip_address ,$hashkey);
+            $hashkey = $request->hash_key;
+
             $hashkey = $this->serviceLogic->checkUserValidation($hashkey, $ip_address);
             return ResponsHelper::success($hashkey);
         } catch (\Exception $e) {
@@ -41,6 +45,7 @@ class EvaluationController extends Controller
     {
         try {
             $employee_number = $request->employee_number;
+            // dd($employee_number);
             $evaluation_list = $this->serviceLogic->getEvaluationList($employee_number);
             return ResponsHelper::success($evaluation_list);
         } catch (\Exception $e) {
@@ -98,27 +103,32 @@ class EvaluationController extends Controller
     public function submitEvaluation(Request $request)
     {
         try {
-            // fillEvaluationTemplate($request->all());
             $evaluation_list = $this->serviceLogic->submitEvaluation($request);
-            // return ResponsHelper::success($evaluation_list);
+            return ResponsHelper::success($evaluation_list);
         } catch (\Exception $e) {
             return ResponsHelper::error($e->getMessage());
         }
     }
 
-    // fillEvaluationTemplate Funtion To fill  Evaluation PDF Template
-    public function fillEvaluationTemplate($request)
-    {
-        $data = $request->all();
-        $creationDate = Carbon::parse($request->input('creation_date'))->format('Ymd');
+    // // fillEvaluationTemplate Funtion To fill  Evaluation PDF Template
+    // public function fillEvaluationTemplate(Request $request)
+    // {
 
-        $templatePath = storage_path('public/ALAJMI_EMP_EVALUATION_DETAILS.docx');
-        $outputPath = storage_path('public/documents/Evaluation_' . $creationDate  . '.pdf');
+    //     try {
 
-        $this->pdfService->fillPdf($templatePath, $data, $outputPath);
+    //         $data = $request->point_details;
+    //         // dd($request->point_details);
+    //         $creationDate = Carbon::parse($request->input('creation_date'))->format('Y-m-d');
+    //         $templatePath = storage_path('public/ALAJMI_EMP_EVALUATION_DETAILS.docx');
+    //         $outputPath = storage_path('public/documents/Evaluation_' . $creationDate  . '.pdf');
 
-        // return response()->download($outputPath);
-    }
+    //         $this->uploadTemplet->upload($templatePath, $data, $outputPath);
+
+    //         // return response()->download($outputPath);
+    //     } catch (\Exception $e) {
+    //         return ResponsHelper::error($e->getMessage());
+    //     }
+    // }
 
     // addNewSection Funtion To Add New Section In Table Evalaution Sections
     public function addNewSection(Request $request)

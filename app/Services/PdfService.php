@@ -15,6 +15,7 @@ class PdfService
 
     public function fillPdf($templatePath, $data, $outputPath)
     {
+        dd($templatePath, $data, $outputPath);
         $this->pdf->AddPage();
         $this->pdf->setSourceFile($templatePath);
         $tplId = $this->pdf->importPage(1);
@@ -27,6 +28,25 @@ class PdfService
         $this->pdf->SetXY(50, 50);
         $this->pdf->Write(0, $data['employee_name']);
 
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['Attitude']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
+        $this->pdf->SetXY(50, 60);
+        $this->pdf->Write(0, $data['employee_no']);
         $this->pdf->SetXY(50, 60);
         $this->pdf->Write(0, $data['employee_no']);
 

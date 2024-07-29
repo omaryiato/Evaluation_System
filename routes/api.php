@@ -8,6 +8,9 @@ use App\Http\Controllers\EvaluationController;
 // Define a route to Check Hashkey
 Route::GET('/evaluation_system', [EvaluationController::class, 'Index'])->name('evaluation_system');
 
+// Define a route to Check Hashkey
+Route::GET('/getTemplet', [EvaluationController::class, 'fillEvaluationTemplate'])->name('getTemplet');
+
 // Define a route to Fetch Evaluation page
 Route::Get('/evaluation_list', [EvaluationController::class, 'evaluationList'])->name('evaluation_list');
 
